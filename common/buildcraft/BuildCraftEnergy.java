@@ -42,13 +42,11 @@ import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 import buildcraft.api.core.BCLog;
 import buildcraft.api.core.JavaTools;
 import buildcraft.api.core.StackKey;
 import buildcraft.api.fuels.BuildcraftFuelRegistry;
-import buildcraft.api.recipes.BuildcraftRecipeRegistry;
 import buildcraft.api.statements.ITriggerExternal;
 import buildcraft.api.statements.StatementManager;
 import buildcraft.core.BCRegistry;

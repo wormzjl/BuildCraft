@@ -15,6 +15,7 @@ out
 #gradle
 build
 .gradle
+modules
 
 #runtime
 run
