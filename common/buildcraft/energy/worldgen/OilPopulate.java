@@ -87,12 +87,9 @@ public final class OilPopulate {
 			bonus *= 20.0;
 		}
 		GenType type = GenType.NONE;
-		if (rand.nextDouble() <= 0.0004 * bonus) {
-			// 0.04%
-			type = GenType.LARGE;
-		} else if (rand.nextDouble() <= 0.001 * bonus) {
+		if (rand.nextDouble() <= 0.001 * bonus) {
 			// 0.1%
-			type = GenType.MEDIUM;
+			type = GenType.LARGE;
 		} else if (oilBiome && rand.nextDouble() <= 0.02 * bonus) {
 			// 2%
 			type = GenType.LAKE;
@@ -133,7 +130,7 @@ public final class OilPopulate {
 
 			int radius;
 			if (type == GenType.LARGE) {
-				radius = 8 + rand.nextInt(9);
+				radius = 11 + rand.nextInt(9);
 			} else {
 				radius = 4 + rand.nextInt(4);
 			}
@@ -164,17 +161,17 @@ public final class OilPopulate {
 			}
 			generateSurfaceDeposit(world, rand, biome, wellX, groundLevel, wellZ, lakeRadius);
 
-			boolean makeSpring = type == GenType.LARGE && BuildCraftEnergy.spawnOilSprings && BuildCraftCore.springBlock != null && (BuildCraftCore.debugWorldgen || rand.nextDouble() <= 0.25);
+			boolean makeSpring = type == GenType.LARGE && BuildCraftEnergy.spawnOilSprings && BuildCraftCore.springBlock != null && (BuildCraftCore.debugWorldgen || rand.nextDouble() <= 0.85);
 
 			// Generate Spout
 			int baseY;
 			if (makeSpring) {
-				baseY = 0;
+				baseY = 3;
 			} else {
 				baseY = wellY;
 			}
 
-			if (makeSpring && world.getBlock(wellX, baseY, wellZ) == Blocks.bedrock) {
+			if (makeSpring) {
 				world.setBlock(wellX, baseY, wellZ, BuildCraftCore.springBlock, 1, 3);
 			}
 			for (int y = baseY + 1; y <= maxHeight; ++y) {
